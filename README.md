@@ -1,16 +1,20 @@
 ## 📽 基于Esp32-Cam 的 IP-Camera
 版本1.0.0
-
+main_v1.0.0.py是不支持热更新的
+main.py 是最新版本
+main_dev.py 是测试版本
 ## 📍 特性
 1. 支持多客户端
 2. 支持stream流
 3. 支持snapshot
 4. 支持在线浏览
 5. 支持设置密钥获取
+6. 支持伪OTA更新(仅测试版)
 
 ## 📜未来计划
-1. 增加OTA更新
-2. more
+1. 对应的移动端
+2. 对应的服务端
+3. more
 
 ## 📌用法
 
@@ -36,6 +40,7 @@ python3 -m esptool.py --chip esp32 --port COM12  write_flash -z 0x1000 esp32cam-
 #### 配置config.json
 将里面的wifi_ssid和wifi_password与自己的WiFi名和密码对应
 若有安全需要,则修改apikey就行
+不想热更新的话,则修改updateUrl为空就行
 
 ### 上传文件
 ```

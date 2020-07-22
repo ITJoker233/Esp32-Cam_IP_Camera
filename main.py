@@ -24,7 +24,7 @@ except:
    import time
 import camera
 import esp
-from machine import Pin
+import machine
 import WIFI.STA
 
 # author:ITJoker

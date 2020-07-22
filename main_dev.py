@@ -1,12 +1,27 @@
-import usocket as socket
-import uasyncio as asyncio
-import urequests as requests
-import ujson as json
+try:
+    import urequests as requests
+except:
+    import requests
+try:
+    import ujson as json
+except:
+    import json
+try:
+    import uasyncio as asyncio
+except:
+    import asyncio
+try:
+    import usocket as socket
+except:
+    import socket
+try:
+    import ustruct as struct
+except:
+    import struct
 import camera
 import time
 import esp
-import 
-from machine import Pin
+import machine
 import WIFI.STA
 
 # author:ITJoker
@@ -57,6 +72,24 @@ def delSocket(ClientSocket):
 def frame_gen():
    while True:
       yield camera.capture()
+async def getTime():
+   # (date(2000, 1, 1) - date(1900, 1, 1)).days * 24*60*60
+   NTP_DELTA = 3155644800
+
+   # The NTP host can be configured at runtime by doing: ntptime.host = 'myhost.org'
+   host = 'ntp1.aliyun.com'
+   NTP_QUERY = bytearray(48)
+   NTP_QUERY[0] = 0x1B
+   addr = socket.getaddrinfo(host, 123)[0][-1]
+   s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+   try:
+      s.settimeout(1)
+      res = s.sendto(NTP_QUERY, addr)
+      msg = s.recv(48)
+   finally:
+      s.close()
+   val = struct.unpack("!I", msg[40:44])[0]
+   return val - NTP_DELTA
 
 async def updateService():
    updateUrlConfig = config['updateUrl']+'/config.json'
@@ -80,7 +113,7 @@ async def updateService():
             with open('config.json','r+') as f:
                f.write(json.loads(config))
                f.close()
-            #machine.reset()
+            machine.reset()
          else:
             pass
       except Exception as e:

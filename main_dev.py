@@ -18,8 +18,11 @@ try:
     import ustruct as struct
 except:
     import struct
+try:
+   import utime as time
+except:
+   import time
 import camera
-import time
 import esp
 import machine
 import WIFI.STA

@@ -1,8 +1,28 @@
-import usocket as socket
-import uasyncio as asyncio
-import ujson as json
+try:
+    import urequests as requests
+except:
+    import requests
+try:
+    import ujson as json
+except:
+    import json
+try:
+    import uasyncio as asyncio
+except:
+    import asyncio
+try:
+    import usocket as socket
+except:
+    import socket
+try:
+    import ustruct as struct
+except:
+    import struct
+try:
+   import utime as time
+except:
+   import time
 import camera
-import time
 import esp
 from machine import Pin
 import WIFI.STA

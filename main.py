@@ -27,7 +27,7 @@ index_body = """
 <body>
   <center>
     <h1>Live Video</h1>
-    <img src="/"""+config['apikey']+"""/live" width=720 height=540 />
+    <img src="/"""+config['apikey']+"""/stream" width=720 height=540 />
   </center>
 </body>
 </html>

@@ -230,7 +230,7 @@ if not cr:
   print("Camera not ready. Can't continue!")
 else:
    # reconfigure camera
-   camera.speffect(2) # black and white
+   #camera.speffect(2) # black and white
    camera.quality(10)  # increase quality from 12 (default) to 10
    # setup networking
    wifi = WIFI.STA.Sta(config['WIFI_SSID'], config['WIFI_PASSWORD'])

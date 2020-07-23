@@ -1,6 +1,6 @@
 ## 📽 基于Esp32-Cam 的 IP-Camera
 
-### 当前版本1.0.0
+### 当前版本1.0.1
 main_v1.0.0.py是不支持热更新的</br>
 main.py 是最新版本</br>
 main_dev.py 是测试版本</br>
@@ -12,7 +12,7 @@ main_dev.py 是测试版本</br>
 3. 支持snapshot
 4. 支持在线浏览
 5. 支持设置密钥获取
-6. 支持伪OTA更新(仅测试版)
+6. 支持伪OTA更新(目前需要自己搭建热更新服务器,只需把要更新的main.py和config.json放在web目录下,并修改更新Url即可)
 
 ## 📜未来计划
 1. 对应的移动端
@@ -52,6 +52,7 @@ ampy --port COM12 put main.py
 ampy --port COM12 put config.json
 ampy --port COM12 put boot.py
 ampy --port COM12 put uasyncio
+ampy --port COM12 put urequests.py
 ampy --port COM12 put WIFI
 ```
 ### 🚀运行

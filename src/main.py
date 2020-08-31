@@ -243,7 +243,7 @@ else:
       # reconfigure camera
       # camera.speffect(2) # black and white
       camera.quality(10)  # increase quality from 12 (default) to 10
-      camera.framesize(1) # 1~11分辨率
+      camera.framesize(4) # 1~11分辨率
       #1=160x120 2=160x128 3=176 x 144 4=240 x 176 5=320 x 240 6=400x296
       #7=640x480 8=800x600 9=1024x768 10=1280x1024 11 =1600x1200
       # setup networking

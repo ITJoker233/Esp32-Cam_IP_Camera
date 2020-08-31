@@ -29,7 +29,7 @@ import WIFI.STA
 
 # author:ITJoker
 # Blog:blog.itjoker.cn
-# Date:2020.07.23 00:13
+# Date:2020.08.31
 esp.osdebug(False)
 #esp.osdebug(True)
 
@@ -221,16 +221,12 @@ async def socketRecv(portID):
      if ok:
         await ports[portID](ClientSocket, requests)
 
-wifiConnectCount = 0
 while True:
    cr = camera.init() 
    print("Camera ready?: ", cr)
    if cr:
       break
    time.sleep(2)
-   wifiConnectCount += 1
-   if wifiConnectCount >= 5:
-      break
 
 if not cr:
   print("Camera not ready. Can't continue!")
@@ -248,27 +244,26 @@ else:
       time.sleep(2)
       wifiConnectCount += 1
       if wifiConnectCount >= 5:
+         print("WIFI not ready. Can't continue!")
          break
-   if wifiConnectCount >= 5:
-      print("WIFI not ready. Can't continue!")
-   else:
-      pic = frame_gen()
-      socks = []
-      socket_ = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-      socket_.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-      address_ = ('0.0.0.0', 80)
-      socket_.bind(address_)
-      socket_.listen(10)
-      socks.append(socket_)
-      ports = [port_80]  # 80
-      loop = asyncio.get_event_loop()
-      for i in range(len(socks)):
-         if i == 0:
-            loop.create_task(socketRecv(i))  # schedule 2 servers for portID 80
-            loop.create_task(socketRecv(i))  # streaming hold socket until client
-         else:
-            loop.create_task(socketRecv(i))  # only one for 81 and 82
-      print('create Task Success!')
-      print('IP-Camera Current Version:%s' %(config['version']))
-      loop.create_task(updateService()) 
-      loop.run_forever()
+
+   pic = frame_gen()
+   socks = []
+   socket_ = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+   socket_.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+   address_ = ('0.0.0.0', 80)
+   socket_.bind(address_)
+   socket_.listen(20)
+   socks.append(socket_)
+   ports = [port_80]  # 80
+   loop = asyncio.get_event_loop()
+   for i in range(len(socks)):
+      if i == 0:
+         loop.create_task(socketRecv(i))  # schedule 2 servers for portID 80
+         loop.create_task(socketRecv(i))  # streaming hold socket until client
+      else:
+         loop.create_task(socketRecv(i))  # only one for 81 and 82
+   print('create Task Success!')
+   print('IP-Camera Current Version:%s' %(config['version']))
+   loop.create_task(updateService()) 
+   loop.run_forever()

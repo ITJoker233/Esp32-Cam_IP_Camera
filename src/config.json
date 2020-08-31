@@ -1,10 +1,10 @@
 {
     "WIFI_SSID": "Wifi_example_ssid",
     "WIFI_PASSWORD": "Wifi_example_password",
-    "hostname":"espcamera",
+    "hostname": "espcamera",
     "apikey": "esp32Camera",
-    "version": "1.0.1",
-    "versionNum": 101,
+    "version": "1.0.2",
+    "versionNum": 102,
     "updateTime": 0,
     "updateUrl": ""
 }

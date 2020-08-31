@@ -16,7 +16,7 @@ class Sta:
         self.wlan = network.WLAN(network.STA_IF)
         self.wlan.active(True)
         if host_name == '':
-            host_name = HOST_NAME
+            host_name = self.HOST_NAME
         wlan.config(dhcp_hostname=host_name)
         if wifi_ssid == '':
             self.wifi_ssid = Sta.WIFI_SSID

@@ -13,7 +13,7 @@ class Ap:
         self.ap = network.WLAN(network.AP_IF)
         self.ap.active(True)
         if host_name == '':
-            host_name = HOST_NAME
+            host_name = self.HOST_NAME
         wlan.config(dhcp_hostname=host_name)
         if wifi_ssid == '':
             self.WIFI_SSID = Ap.WIFI_SSID

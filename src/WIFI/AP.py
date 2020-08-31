@@ -14,7 +14,7 @@ class Ap:
         self.ap.active(True)
         if host_name == '':
             host_name = self.HOST_NAME
-        wlan.config(dhcp_hostname=host_name)
+        #self.ap.config(dhcp_hostname=host_name)
         if wifi_ssid == '':
             self.WIFI_SSID = Ap.WIFI_SSID
             self.WIFI_PWD = Ap.WIFI_PWD

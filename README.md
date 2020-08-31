@@ -60,6 +60,6 @@ ampy --port COM12 put WIFI
 ```
 ### 🚀运行
 上传成功后,按下reset键,已知config.json中的apikey为esp32Camera</br>
-在浏览器打开(实时观看):```http://esp32-cam的IP/webcam/esp32Camera```</br>
-(获取视频流):```http://esp32-cam的IP/stream/esp32Camera```</br>
-(获取照片):```http://esp32-cam的IP/snapshot/esp32Camera```
+在浏览器打开(实时观看):```http://espcamera.local/webcam/esp32Camera```</br>
+(获取视频流):```http://espcamera.local/stream/esp32Camera```</br>
+(获取照片):```http://espcamera.local/snapshot/esp32Camera```

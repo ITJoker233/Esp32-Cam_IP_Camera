@@ -221,11 +221,16 @@ async def socketRecv(portID):
      if ok:
         await ports[portID](ClientSocket, requests)
 
+cameraInit = 0
 while True:
    cr = camera.init() 
    print("Camera ready?: ", cr)
+   if cameraInit:
+       print('Camera init fail!')
+       break
    if cr:
       break
+   cameraInit += 1
    time.sleep(2)
 
 if not cr:

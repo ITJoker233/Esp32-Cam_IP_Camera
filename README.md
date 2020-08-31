@@ -33,14 +33,14 @@ pip3 install adafruit-ampy
 ### 🔨擦除ESP32-CAM
 #### 假如为COM12,先擦除ESP32-CAM
 ```
-python3 -m esptool.py --chip esp32 --port COM12  erase_flash
+python3 -m esptool --chip esp32 --port COM12  erase_flash
 ```
 
 #### 🔧刷入固件
 固件在bin目录下
 ```
 cd bin
-python3 -m esptool.py --chip esp32 --port COM12  write_flash -z 0x1000 esp32cam-mirco_python_v1.11-665-gfb0141559-kaki5.bin
+python3 -m esptool --chip esp32 --port COM12  write_flash -z 0x1000 esp32cam-mirco_python_v1.11-665-gfb0141559-kaki5.bin
 ```
 
 #### ⚙配置config.json
